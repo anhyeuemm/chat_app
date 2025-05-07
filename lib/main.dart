@@ -1,3 +1,4 @@
+import 'package:chat_app_eve/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,30 +13,7 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
       title: "Chat App",
       theme: ThemeData(primarySwatch: Colors.yellow),
-      home: Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(),
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          print('button clicked');
-        }),
-        body: Text('Hello!'),
-      ),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        print('button clicked');
-      }),
-      body: Text('Hello!'),
+      home: LoginPage(),
     );
   }
 }
