@@ -3,7 +3,8 @@ import 'package:chat_app_eve/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  final String username;
+  const ChatPage({Key? key, required this.username}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +12,7 @@ class ChatPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text('Hi Andrei!'),
+        title: Text('Hi $username!'),
         actions: [
           IconButton(
               onPressed: () {
