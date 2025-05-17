@@ -1,4 +1,4 @@
-//import 'package:chat_app_eve/chat_page.dart';
+import 'package:chat_app_eve/chat_page.dart';
 import 'package:chat_app_eve/login_page.dart';
 //import 'package:chat_app_eve/counter_stateful_demo.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +19,7 @@ class ChatApp extends StatelessWidget {
           appBarTheme: AppBarTheme(
               backgroundColor: Colors.blue, foregroundColor: Colors.black)),
       home: LoginPage(),
+      routes: {'/chat': (context) => ChatPage()},
     );
   }
 }
