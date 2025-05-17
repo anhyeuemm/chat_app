@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app_eve/chat_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class LoginPage extends StatelessWidget {
       print(userNameController.text);
       print(passwordController.text);
       //TODO: Navigate to ChatPage on successful login
-      Navigator.pushNamed(context, '/chat',
+      Navigator.pushReplacementNamed(context, '/chat',
           arguments: '${userNameController.text}');
 
       print('login successful!');
