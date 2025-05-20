@@ -1,6 +1,5 @@
 import 'package:chat_app_eve/chat_page.dart';
 import 'package:chat_app_eve/login_page.dart';
-//import 'package:chat_app_eve/counter_stateful_demo.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app_eve/utils/textfield_styles.dart';
+//import 'package:chat_app_eve/utils/textfield_styles.dart';
 import 'package:chat_app_eve/widgets/login_text_field.dart';
-import 'package:chat_app_eve/chat_page.dart';
+//import 'package:chat_app_eve/chat_page.dart';
+import 'package:chat_app_eve/utils/spaces.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -79,9 +80,7 @@ class LoginPage extends StatelessWidget {
                         },
                         controller: userNameController,
                       ),
-                      SizedBox(
-                        height: 24,
-                      ),
+                      verticalSpacing(24),
                       LoginTextField(
                         hasAsterisks: true,
                         controller: passwordController,
@@ -90,9 +89,7 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 24,
-                ),
+                verticalSpacing(24),
                 ElevatedButton(
                     onPressed: () {
                       loginUser(context);

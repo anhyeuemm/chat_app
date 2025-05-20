@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/textfield_styles.dart';
 
 class LoginTextField extends StatelessWidget {
@@ -27,7 +26,7 @@ class LoginTextField extends StatelessWidget {
       decoration: InputDecoration(
           hintText: 'Add your username',
           hintStyle: ThemeTextStyle.loginTextFieldStyle,
-          border: OutlineInputBorder()),
+          border: const OutlineInputBorder()),
     );
   }
 }
