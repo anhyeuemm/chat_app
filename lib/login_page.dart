@@ -56,8 +56,8 @@ class LoginPage extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.blueGrey),
                 ),
-                Image.network(
-                  'https://static.bandainamcoent.eu/high/tekken/tekken-8/02-characters/new-gallery/Wide/JIN_new.png',
+                Image.asset(
+                  'assets/illustration.png',
                   height: 200,
                 ),
                 //TODO: Add Username & Password text fields
