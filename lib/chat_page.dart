@@ -45,7 +45,6 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   //TODO: Move this to repository class
-  final ImageRepository _imageRepo = ImageRepository();
 
   @override
   void initState() {
@@ -75,14 +74,6 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Column(
         children: [
-          FutureBuilder<List<PixelfordImage>>(
-              future: _imageRepo.getNetworkImages(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<PixelfordImage>> snapshot) {
-                if (snapshot.hasData)
-                  return Image.network(snapshot.data![0].urlFullSize);
-                return CircularProgressIndicator();
-              }),
           Expanded(
             flex: 1,
             child: ListView.builder(
