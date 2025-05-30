@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:chat_app_eve/models/image_model.dart';
-import 'package:http/http.dart' as http;
+import 'package:chat_app_eve/repo/image_repository.dart';
+
 import 'package:chat_app_eve/widgets/chat-bubble.dart';
 import 'package:chat_app_eve/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
@@ -43,37 +44,18 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-//TODO: Get Network Images from API
-  Future<List<PixelfordImage>> _getNetworkImages() async {
-    var endpointUrl = Uri.parse(
-        'https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-bichon-frise-dog-royalty-free-image-1682312789.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=980:*');
-
-    final response = await http.get(endpointUrl);
-
-    if (response.statusCode == 200) {
-      final List<dynamic> decodeList = jsonDecode(response.body) as List;
-
-      final List<PixelfordImage> _imageList = decodeList.map((listItem) {
-        return PixelfordImage.fromJson(listItem);
-      }).toList();
-      print(_imageList[0].urlFullSize);
-      return _imageList;
-    } else {
-      throw Exception('API not successful!');
-    }
-  }
+  //TODO: Move this to repository class
+  final ImageRepository _imageRepo = ImageRepository();
 
   @override
   void initState() {
     _loadInitialMessages();
-    _getNetworkImages();
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _getNetworkImages();
     final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
@@ -94,7 +76,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           FutureBuilder<List<PixelfordImage>>(
-              future: _getNetworkImages(),
+              future: _imageRepo.getNetworkImages(),
               builder: (BuildContext context,
                   AsyncSnapshot<List<PixelfordImage>> snapshot) {
                 if (snapshot.hasData)
