@@ -44,8 +44,9 @@ class _ChatPageState extends State<ChatPage> {
   }
 
 //TODO: Get Network Images from API
-  _getNetworkImages() async {
-    var endpointUrl = Uri.parse('https://picsum.photos/v2/list');
+  Future<List<PixelfordImage>> _getNetworkImages() async {
+    var endpointUrl = Uri.parse(
+        'https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-bichon-frise-dog-royalty-free-image-1682312789.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=980:*');
 
     final response = await http.get(endpointUrl);
 
@@ -56,6 +57,9 @@ class _ChatPageState extends State<ChatPage> {
         return PixelfordImage.fromJson(listItem);
       }).toList();
       print(_imageList[0].urlFullSize);
+      return _imageList;
+    } else {
+      throw Exception('API not successful!');
     }
   }
 
@@ -89,6 +93,14 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Column(
         children: [
+          FutureBuilder<List<PixelfordImage>>(
+              future: _getNetworkImages(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<PixelfordImage>> snapshot) {
+                if (snapshot.hasData)
+                  return Image.network(snapshot.data![0].urlFullSize);
+                return CircularProgressIndicator();
+              }),
           Expanded(
             flex: 1,
             child: ListView.builder(
